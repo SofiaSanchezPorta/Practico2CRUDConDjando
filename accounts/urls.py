@@ -21,8 +21,8 @@ urlpatterns = [
         views.LogoutMessageView.as_view(),
         name='logout_message'
     ),
-    path('singup/',
-        views.SingUpView.as_view(),
-        name='singup'
+    path('signup/',
+        views.SignUpView.as_view(),
+        name='signup'
     ),
 ]

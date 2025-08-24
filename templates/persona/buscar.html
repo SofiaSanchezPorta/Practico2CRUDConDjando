@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{ titulo }}</h1>
+    <form method="get">
+        <input type="text" name="q" placeholder="Buscar persona..." value="{{ query }}">
+        <button type="submit">Buscar</button>
+    </form>
+    {% if query %}
+        <h2>Resultados</h2>
+
+        {% if personas %}
+            <p>Se encontraron {{ personas|length }} resultados para la búsqueda {{ query }}</p>
+        {% else %}
+            <p>No se encontraron resultados para la búsqueda {{ query }}</p>
+        {% endif %}
+        <ul>
+            {% for persona in personas %}
+                <li>{{ persona }}</li>
+            {% endfor %}
+        </ul>
+
+    {% endif %}
+{% endblock content %}

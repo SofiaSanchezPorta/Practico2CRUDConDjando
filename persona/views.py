@@ -52,4 +52,8 @@ class PersonaSearchView(ListView):
         context = super().get_context_data(**kwargs)
         context['titulo'] = 'Buscar Persona'
         context['query'] = self.request.GET.get("q", "")
+    
+        #print("Context data:", context)
+
         return context
+    

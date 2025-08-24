@@ -6,9 +6,9 @@ from django.views.generic import CreateView, TemplateView
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 
-class SingUpView(CreateView):
+class SignUpView(CreateView):
     form_class = UserCreationForm
-    template_name = 'accounts/singup.html'
+    template_name = 'accounts/signup.html'
     success_url = reverse_lazy('accounts:login')
 
     def get_context_data(self, **kwargs):
