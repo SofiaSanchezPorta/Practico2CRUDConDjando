@@ -8,6 +8,7 @@ class PersonaListView(ListView):
     model = Persona
     template_name = "persona/lista.html"
     context_object_name = "personas"
+    paginate_by = 15
 
 class PersonaDetailView(DetailView):
     model = Persona
@@ -50,7 +51,7 @@ class PersonaSearchView(ListView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = 'Buscar Persona'
+        context['titulo'] = 'Búsqueda de personas'
         context['query'] = self.request.GET.get("q", "")
     
         #print("Context data:", context)

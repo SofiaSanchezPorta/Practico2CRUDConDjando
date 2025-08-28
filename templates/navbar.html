@@ -29,7 +29,7 @@
       </ul>
       <form class="d-flex" role="search" action="{% url 'persona:buscar' %}">
         {# action="{% url 'persona:buscar' %} → Para que al buscar en el navbar busque la persona #}
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q"/>
+        <input class="form-control me-2" type="search" placeholder="Nombre de la persona" aria-label="Search" name="q"/>
         {# name="q" → Para que al buscar en el navbar reciba el parámetro q en el path #}
         <button class="btn btn-outline-success" type="submit">Buscar</button>
       </form>

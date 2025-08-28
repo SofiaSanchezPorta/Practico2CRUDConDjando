@@ -19,8 +19,8 @@ def run(*args):
             oficinas_a_crear = []
 
             for row in reader:
-                nombre = row.get('nombre')
-                nombre_corto = row.get('nombre_corto')
+                nombre = row.get('nombre').strip()
+                nombre_corto = row.get('nombre_corto').strip()
 
                 if not nombre or not nombre_corto:
                     print(f"Error en la fila {row}. Falta un campo.")

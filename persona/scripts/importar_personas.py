@@ -22,10 +22,10 @@ def run(*args):
             personas_a_crear = []
 
             for row in reader:
-                nombre = row.get('nombre')
-                apellido = row.get('apellido')
-                edad = row.get('edad')
-                oficina_nombre_corto = row.get('oficina_nombre_corto')
+                nombre = row.get('nombre').strip()
+                apellido = row.get('apellido').strip()
+                edad = row.get('edad').strip()
+                oficina_nombre_corto = row.get('oficina_nombre_corto').strip()
 
                 if not nombre or not apellido or not edad or not oficina_nombre_corto:
                     print(f"Error en la fila {row}. Falta un campo.")

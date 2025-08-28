@@ -11,6 +11,10 @@
                 <li>{{persona}}</li>
             {% endfor %}
         </ul>
+        {% include 'paginator.htm' %}
+        
+    {% else %}
+        <p>No hay personas registradas.</p>
     {% endif %}
     
 {% endblock content %}
