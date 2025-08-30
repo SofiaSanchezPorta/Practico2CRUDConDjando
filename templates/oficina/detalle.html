@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1>Detalle de oficina</h1>
+
+    <h6><strong>{{oficina.nombre}}</strong></h6>
+    <p>{{oficina.nombre_corto}}</p>
+
+    <p>Personas en esta oficina:</p>
+    <ul>
+        {% for persona in personas %}
+        <li>{{ persona.apellido }}, {{ persona.nombre }}</li>
+        {% endfor %}
+
+    </ul>
+
+
+    <div class="container mt-4">
+      <h2>{{ oficinas.nombre }} ({{ oficinas.nombre_corto }})</h2>
+
+      <h4 class="mt-3">Personas de esta oficina:</h4>
+      <ul class="list-group">
+        {% for persona in personas %}
+          <li class="list-group-item">
+            {{ persona.apellido }}, {{ persona.nombre }}
+          </li>
+        {% empty %}
+          <li class="list-group-item">No hay personas registradas en esta oficina.</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+
+{% endblock content %}
+    

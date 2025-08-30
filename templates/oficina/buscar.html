@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{ titulo }}</h1>
+    <form method="get" action="{% url 'oficina:buscar' %}">
+        <input type="text" name="q" placeholder="Buscar oficina..." value="{{ query }}">
+        <button type="submit">Buscar</button>
+    </form>
+
+    {% if query %}
+        <h2>Resultados</h2>
+
+        {% if oficinas %}
+            <p>Se encontraron {{ oficinas|length }} resultados para la búsqueda {{ query }}</p>
+        {% else %}
+            <p>No se encontraron resultados para la búsqueda {{ query }}</p>
+        {% endif %}
+        <ul>
+            {% for oficina in oficinas %}
+                <li>{{ oficina }}</li>
+            {% endfor %}
+        </ul>
+
+    {% endif %}
+{% endblock content %}

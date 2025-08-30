@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    {% if oficinas %}
+        <ul>
+            {% for oficina in oficinas %}
+                <li>{{oficina}}</li>
+            {% endfor %}
+        </ul>
+        {% include 'paginator.htm' %}
+
+    {% else %}
+        <p>No existen oficinas cargadas</p>
+    {% endif%}
+    
+{% endblock content %}

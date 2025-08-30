@@ -3,6 +3,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.urls import reverse_lazy
 from .models import Persona
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Q
 
 class PersonaListView(ListView):
     model = Persona
@@ -14,18 +15,29 @@ class PersonaDetailView(DetailView):
     model = Persona
     template_name = "persona/detalle.html"
     context_object_name = "persona"
+    paginate_by = 1
 
 class PersonaCreateView(LoginRequiredMixin, CreateView):
     model = Persona
     template_name = "persona/crear.html"
     fields = ['nombre', 'apellido', 'edad', 'oficina']
     success_url = reverse_lazy('persona:lista')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Crear persona'
+        return context
 
 class PersonaUpdateView(LoginRequiredMixin, UpdateView):
     model = Persona
     template_name = "persona/crear.html"
     fields = ['nombre', 'apellido', 'edad', 'oficina']
     success_url = reverse_lazy('persona:lista')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Editar persona'
+        return context
 
 class PersonaDeleteView(LoginRequiredMixin, DeleteView):
     model = Persona
@@ -36,6 +48,7 @@ class PersonaDeleteView(LoginRequiredMixin, DeleteView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['action'] = 'eliminar'
+        context['title'] = 'Eliminar persona'
         return context
 
 class PersonaSearchView(ListView):
@@ -46,7 +59,9 @@ class PersonaSearchView(ListView):
     def get_queryset(self):
         query = self.request.GET.get("q")
         if query:
-            return Persona.objects.filter(nombre__icontains=query)
+            return Persona.objects.filter(
+                Q(nombre__icontains=query) | Q(apellido__icontains=query)
+                )
         return Persona.objects.none()
     
     def get_context_data(self, **kwargs):
