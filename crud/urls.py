@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from persona.views import home
 
 
 urlpatterns = [
@@ -24,4 +25,5 @@ urlpatterns = [
     path('oficina/', include('oficina.urls')),
     path('accounts/', include('allauth.urls')),
     path('captcha/', include('captcha.urls')),
+    path('', home, name='home'),
 ]

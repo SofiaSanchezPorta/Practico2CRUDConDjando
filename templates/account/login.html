@@ -6,7 +6,11 @@
     <form method="post">
         {% csrf_token %}
         {{ form|crispy}}
-        <button type="submit">Iniciar sesión</button>
+            <div class="container d-flex justify-content-center mb-3">
+                <button class="btn btn-secondary btn-sm px-3 btn-eq btn-black">Iniciar sesión</button>
+            </div>
+            <div class="container d-flex justify-content-center">
+                <p>¿No tienes una cuenta?<a class="btn btn-secondary btn-sm px-3 btn-eq btn-black ml-3" href="{% url 'account_signup' %}">Regístrate aquí</a></p>
+            </div>
     </form>
-    <p>¿No tienes una cuenta? <a href="{% url 'account_signup' %}">Regístrate aquí</a>.</p>
 {% endblock content %}
